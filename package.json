@@ -4,15 +4,15 @@
   "description": "Copy the clipboard and perform a translation search in DeepL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "package": "electron-packager . DeepL-Translate --platform=darwin --arch=x64 --electronVersion=8.2.1 --overwrite"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yagen-mori/DeepL-Translate.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["electron", "deepl", "translate"],
+  "author": "Morihisa Nohara",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/yagen-mori/DeepL-Translate/issues"
   },
