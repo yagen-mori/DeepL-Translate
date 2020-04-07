@@ -14,33 +14,33 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   const electronScreen = electron.screen;
 
-  // デスクトップ領域の大きさを取得
+  // Get the size of the desktop area
   const workArea = electronScreen.getPrimaryDisplay().workArea;
 
-  // 推奨サイズ
+  // Recommended size
   const initialWidth = 1300;
   const initialHeight = 640;
 
-  // BrowserWindowを新規作成
+  // Create a new BrowserWindow
   let win = new BrowserWindow({
     width: Math.min(workArea.width, initialWidth),
     height: Math.min(workArea.height, initialHeight),
   });
 
-  // BrowserWindowを閉じたらアプリ終了
+  // Close BrowserWindow and close the application
   win.on('closed', () => {
     win = null;
     app.quit();
   });
 
- // レイアウト指定用の定数
- const { width, height } = win.getBounds();
- const gTransHeight = 300;
+  // layout constants
+  const { width, height } = win.getBounds();
+  const gTransHeight = 300;
 
- // Grammaly用のBrowserViewを作成
+  // Create a BrowserView for deepl
   const deepl = new BrowserView({
     webPreferences: {
-      // nodeの機能を無効化
+      // Disable node functionality
       nodeIntegration: false,
     }
   });
@@ -53,13 +53,13 @@ app.on('ready', function() {
     height: height
   });
 
-  //deepl.webContents.loadURL('www.deepl.com/ja/translator#en/ja/');
-  deepl.webContents.loadURL('https://www.deepl.com/ja/translator#en/ja/');
+  deepl.webContents.loadURL('https://www.deepl.com/');
 
   globalShortcut.register('Alt+N', function(){
       const text = Clipboard.readText();
-      //mainWindow.loadURL("https://www.deepl.com/ja/translator#en/ja/welcome");
       deepl.webContents.loadURL('https://www.deepl.com/ja/translator#en/ja/'+ text);
+      win.setAlwaysOnTop(true);
+      win.setAlwaysOnTop(false);
       win.focus();
   })
 });
