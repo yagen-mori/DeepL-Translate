@@ -58,8 +58,6 @@ app.on('ready', function() {
   globalShortcut.register('Alt+N', function(){
       const text = Clipboard.readText();
       deepl.webContents.loadURL('https://www.deepl.com/ja/translator#en/ja/'+ text);
-      win.setAlwaysOnTop(true);
-      win.setAlwaysOnTop(false);
-      win.focus();
+      win.show();
   })
 });
